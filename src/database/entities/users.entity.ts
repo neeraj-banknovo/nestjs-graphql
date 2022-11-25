@@ -28,7 +28,7 @@ export class User extends BaseEntity implements IUser {
   @Column({ type: 'smallint', nullable: false })
   age: number;
 
-  @Field(() => String, { description: 'User status' })
+  @Field(() => UserStatus, { description: 'User status' })
   @Column({
     type: 'enum',
     enum: UserStatus,

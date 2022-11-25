@@ -1,5 +1,6 @@
 import { CardCategory, CardStatus } from '../enums';
 import { IBaseEntity } from './base.interface';
+import { IUser } from './users.interface';
 
 export interface ICard extends IBaseEntity {
   id: string;
@@ -9,5 +10,5 @@ export interface ICard extends IBaseEntity {
   lastFour: number;
   status: CardStatus;
   expiry: string;
-  user?: any;
+  user?: IUser;
 }

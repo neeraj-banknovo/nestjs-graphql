@@ -3,7 +3,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver } from '@nestjs/apollo';
 import { join } from 'path';
 import { modules } from './modules';
-import { CardStatus, CardCategory } from './common/enums';
+import { CardStatus, CardCategory, UserStatus } from './common/enums';
 
 @Module({
   imports: [
@@ -15,6 +15,7 @@ import { CardStatus, CardCategory } from './common/enums';
       resolvers: {
         CardStatus: CardStatus,
         CardCategory: CardCategory,
+        UserStatus: UserStatus,
       },
       formatError: (error: any) => {
         const graphQLFormattedError: any = {
