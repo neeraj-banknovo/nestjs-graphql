@@ -13,7 +13,7 @@ interface findAllOptions<T> extends findOneOptions<T> {
 }
 
 const defaultScope: FindOneOptions = {
-    withDeleted: true,
+    withDeleted: false,
 };
 
 
