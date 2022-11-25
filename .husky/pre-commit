@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "Husky: Running pre-commit hook(s)."
+echo "\n"
+echo "👀 Running Lint Test"
+
+npm run lint
+echo "\n"
+echo "✅ Linting passed"
+
+echo "\n"
+echo "Everthing looks 👌👌👌, go ahead with your commit"
+echo "\n\n"
