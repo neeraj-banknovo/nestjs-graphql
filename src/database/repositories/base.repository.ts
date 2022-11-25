@@ -28,10 +28,10 @@ export abstract class BaseRepository<T> {
     async getById(id: string, findOptions: findOneOptions<T> = {}): Promise<T> {
         const { select = [], relations = [] } = findOptions;
         const options: FindOneOptions = {
-            ...defaultScope,
             where: { id },
             ...(select.length && { select }),
             ...(relations.length && { relations }),
+            ...defaultScope,
         };
         return this._repository.findOne(options);
     }
@@ -39,12 +39,12 @@ export abstract class BaseRepository<T> {
     async getByUserId(userId: string, findOptions: findAllOptions<T> = {}): Promise<T[]> {
         const { select = [], relations = [], skip = null, take = null } = findOptions;
         const options: FindManyOptions = {
-            ...defaultScope,
             where: { userId },
             ...(select.length && { select }),
             ...(relations.length && { relations }),
             ...(skip && {skip}),
             ...(take && {take}),
+            ...defaultScope,
         };
         return this._repository.find(options);
     }
@@ -52,11 +52,11 @@ export abstract class BaseRepository<T> {
     async getAll(findOptions: findAllOptions<T> = {}): Promise<T[]> {
         const { select = [], relations = [], skip = null, take = null } = findOptions;
         const options: FindManyOptions = {
-            ...defaultScope,
             ...(select.length && { select }),
             ...(relations.length && { relations }),
             ...(skip && {skip}),
             ...(take && {take}),
+            ...defaultScope,
         };
         return this._repository.find(options);
     }
