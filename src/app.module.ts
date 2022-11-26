@@ -16,7 +16,7 @@ import { SharedModule } from './shared/shared.module';
     ConfigsModule,
 
     /* This module registers the crons in the app */
-    // CronModule,
+    CronModule,
 
     /* Application modules */
     ModulesModule,
