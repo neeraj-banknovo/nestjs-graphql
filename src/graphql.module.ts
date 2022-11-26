@@ -9,7 +9,7 @@ import { CardStatus, CardCategory, UserStatus } from './common/enums';
   imports: [
     GraphQLModule.forRoot({
       driver: ApolloDriver,
-      path: '/graphql',
+      path: 'api/graphql',
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
       include: [...modules],
       resolvers: {

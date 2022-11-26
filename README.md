@@ -38,7 +38,9 @@ $ npm run start:prod
 
 #### See your app in action
 
- - [http://localhost:PORT/graphql](http://localhost:PORT/graphql)
+ - [Api](http://localhost:3005/api)
+ - [Graphql](http://localhost:3005/api/graphql)
+ - [Health](http://localhost:3005/api/health)
 
 
 #### Generate Migration based on entities
