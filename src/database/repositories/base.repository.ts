@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { DeepPartial, FindManyOptions, FindOneOptions, Repository, UpdateResult } from 'typeorm';
-import { findOneOptions, findAllOptions } from './repository.interface';
+import { findOneOptions, findAllOptions } from '../../common/interfaces/repository.interface';
 
 export const defaultScope: FindOneOptions = {
     withDeleted: false,

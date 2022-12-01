@@ -6,7 +6,7 @@ import { CardStatus } from '../../common/enums';
 import { ICard } from '../../common/interfaces';
 import { Card } from '../entities/cards.entity';
 import { BaseRepository, defaultScope } from './base.repository';
-import { findAllOptions } from './repository.interface';
+import { findAllOptions } from '../../common/interfaces/repository.interface';
 
 @Injectable()
 export class CardsRepository extends BaseRepository<Card> {

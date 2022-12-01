@@ -1,4 +1,5 @@
 import { Field, ObjectType, PickType } from '@nestjs/graphql';
+import { IUser } from '../../../common/interfaces';
 import { Card } from '../../../database/entities/cards.entity';
 import { User } from '../../../database/entities/users.entity';
 
@@ -13,7 +14,7 @@ export class CardSchema extends PickType(Card, [
   'userId',
 ] as const) {
   @Field(() => User, { description: 'User details' })
-  user: User;
+  user: IUser;
 }
 
 @ObjectType({ isAbstract: true, description: 'Create Card schema' })
