@@ -5,7 +5,7 @@ import { ConfigsModule } from './config/config.module';
 import { ConsumersModule } from './consumers/consumers.module';
 import { CronModule } from './crons/cron.module';
 import { DatabaseModule } from './database/database.module';
-import { GraphQlModule } from './graphql.module';
+import { GraphQlModule } from './graphql/graphql.module';
 import { HealthCheckModule } from './health-check/health.check.module';
 import { ModulesModule } from './modules/modules.module';
 import { SharedModule } from './shared/shared.module';
