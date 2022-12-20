@@ -12,6 +12,7 @@ export class CardSchema extends PickType(Card, [
   'category',
   'status',
   'userId',
+  'createdAt',
 ] as const) {
   @Field(() => User, { description: 'User details' })
   user: IUser;

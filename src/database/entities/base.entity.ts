@@ -1,8 +1,18 @@
-import { Field } from '@nestjs/graphql';
-import { CreateDateColumn, DeleteDateColumn, UpdateDateColumn } from 'typeorm';
+import { Field, ID, ObjectType } from '@nestjs/graphql';
+import {
+  CreateDateColumn,
+  DeleteDateColumn,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 import { IBaseEntity } from '../../common/interfaces';
 
+@ObjectType({ isAbstract: true })
 export class BaseEntity implements IBaseEntity {
+  @Field(() => ID, { description: 'Id' })
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
+
   @Field(() => String, { description: 'Created at timestamp' })
   @CreateDateColumn({
     name: 'created_at',

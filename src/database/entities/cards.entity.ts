@@ -1,11 +1,5 @@
-import { ObjectType, Field, ID } from '@nestjs/graphql';
-import {
-  Entity,
-  PrimaryGeneratedColumn,
-  Column,
-  JoinColumn,
-  ManyToOne,
-} from 'typeorm';
+import { ObjectType, Field } from '@nestjs/graphql';
+import { Entity, Column, JoinColumn, ManyToOne } from 'typeorm';
 import { CardCategory, CardStatus } from '../../common/enums';
 import { ICard } from '../../common/interfaces';
 import { BaseEntity } from './base.entity';
@@ -14,10 +8,6 @@ import { User } from './users.entity';
 @Entity({ name: 'cards' })
 @ObjectType({ isAbstract: true })
 export class Card extends BaseEntity implements ICard {
-  @Field(() => ID, { description: 'Id of the card' })
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
-
   @Field(() => CardCategory, { description: 'Category of the card' })
   @Column({
     type: 'enum',

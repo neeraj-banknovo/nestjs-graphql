@@ -11,7 +11,7 @@ export abstract class ITransactionRunner {
   abstract releaseTransaction(): Promise<void>;
 }
 
-class TransactionRunner implements ITransactionRunner {
+export class TransactionRunner implements ITransactionRunner {
   private hasTransactionDestroyed = false;
   constructor(private readonly queryRunner: QueryRunner) {}
 

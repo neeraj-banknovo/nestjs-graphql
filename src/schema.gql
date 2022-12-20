@@ -18,8 +18,11 @@ type Query {
 
 """User schema"""
 type UserSchema {
-  """User Id"""
+  """Id"""
   id: ID!
+
+  """Created at timestamp"""
+  createdAt: String!
 
   """User first name"""
   firstName: String!
@@ -54,8 +57,11 @@ enum UserStatus {
 
 """Card schema"""
 type CardSchema {
-  """Id of the card"""
+  """Id"""
   id: ID!
+
+  """Created at timestamp"""
+  createdAt: String!
 
   """Category of the card"""
   category: CardCategory!
@@ -98,8 +104,14 @@ enum CardStatus {
 }
 
 type User {
-  """User Id"""
+  """Id"""
   id: ID!
+
+  """Created at timestamp"""
+  createdAt: String!
+
+  """Updated at timestamp"""
+  updatedAt: String!
 
   """User first name"""
   firstName: String!
@@ -127,7 +139,7 @@ type Mutation {
 
 """Create user schema"""
 type CreateUserSchema {
-  """User Id"""
+  """Id"""
   id: ID!
 
   """User first name"""
@@ -156,7 +168,7 @@ input CreateUserInput {
 
 """Create Card schema"""
 type CreateCardSchema {
-  """Id of the card"""
+  """Id"""
   id: ID!
 
   """Nick name on the card"""

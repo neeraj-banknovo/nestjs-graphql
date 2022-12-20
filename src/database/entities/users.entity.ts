@@ -1,5 +1,5 @@
-import { ObjectType, Field, ID } from '@nestjs/graphql';
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { ObjectType, Field } from '@nestjs/graphql';
+import { Column, Entity, OneToMany } from 'typeorm';
 import { UserStatus } from '../../common/enums';
 import { IUser } from '../../common/interfaces';
 import { BaseEntity } from './base.entity';
@@ -8,10 +8,6 @@ import { Card } from './cards.entity';
 @Entity({ name: 'users' })
 @ObjectType({ isAbstract: true })
 export class User extends BaseEntity implements IUser {
-  @Field(() => ID, { description: 'User Id' })
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
-
   @Field(() => String, { description: 'User first name' })
   @Column({ type: 'varchar', length: 60, nullable: false, name: 'first_name' })
   firstName: string;

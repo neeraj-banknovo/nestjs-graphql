@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { FindManyOptions, Repository } from 'typeorm';
+import { DeepPartial, EntityManager, FindManyOptions, Repository } from 'typeorm';
 import { CardStatus } from '../../common/enums';
 import { ICard } from '../../common/interfaces';
 import { Card } from '../entities/cards.entity';
@@ -31,5 +31,9 @@ export class CardsRepository extends BaseRepository<Card> {
       ...defaultScope,
     };
     return this.repository.find(options);
+  }
+
+  async saveWithTransaction(data: DeepPartial<Card>, transactionManager: EntityManager): Promise<Card> {
+    return transactionManager.save(Card, data);
   }
 }
