@@ -1,10 +1,17 @@
-import { Module } from '@nestjs/common';
+import { Module, Provider } from '@nestjs/common';
 import { CardsResolver } from './resolver/cards.resolver';
-import { CardsService } from './service/cards.service';
+import { CardsService, ICardsService } from './service/cards.service';
+
+const providers: Provider[] = [
+  {
+    provide: ICardsService,
+    useClass: CardsService,
+  },
+];
 
 @Module({
   imports: [],
-  providers: [CardsResolver, CardsService],
-  exports: [CardsService],
+  providers: [CardsResolver, ...providers],
+  exports: [],
 })
 export class CardsModule {}

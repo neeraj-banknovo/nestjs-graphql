@@ -1,10 +1,17 @@
-import { Module } from '@nestjs/common';
+import { Module, Provider } from '@nestjs/common';
 import { UsersResolver } from './resolver/users.resolver';
-import { UsersService } from './service/users.service';
+import { IUsersService, UsersService } from './service/users.service';
+
+const providers: Provider[] = [
+  {
+    provide: IUsersService,
+    useClass: UsersService,
+  },
+];
 
 @Module({
   imports: [],
-  providers: [UsersResolver, UsersService],
-  exports: [UsersService],
+  providers: [UsersResolver, ...providers],
+  exports: [],
 })
 export class UsersModule {}

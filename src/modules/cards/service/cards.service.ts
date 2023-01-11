@@ -6,8 +6,28 @@ import { CardsRepository } from '../../../database/repositories/cards.repository
 import { DbTransactionFactory, TransactionRunner } from '../../../database/transaction.factory';
 import { CreateCardInput } from '../dto/cards-input.dto';
 
+/*  To achieve the abstraction over a provider or a class, use  abstract class instead of using Interface.
+    Reason - 
+    During resolving the metadata the reflection api doesn't give useful meta information to Nest Injector.
+*/
+
+/* 
+    Internally reflection api will get the reflection for Interface like this-
+    const metaData = Reflect.getMetadata('design:paramtypes', ICardsService);
+    => metadata = [Object].
+
+    Plain object is not useful, instead use abstract class here for abstraction since internally TS converts classes into type
+    which can be used here as Type of the class.
+*/
+export abstract class ICardsService { 
+  abstract getCardsByUserId(userId: string): Promise<ICard[]>;
+  abstract getCardById(id: string): Promise<ICard>;
+  abstract createCard(data: CreateCardInput): Promise<Record<string, any>>;
+  abstract getActiveCount(): Promise<number>;
+}
+
 @Injectable()
-export class CardsService {
+export class CardsService implements ICardsService {
   constructor(
     private readonly cardRepository: CardsRepository,
     private transactionRunner: DbTransactionFactory,
@@ -15,8 +35,11 @@ export class CardsService {
 
   public async getCardsByUserId(userId: string): Promise<ICard[]> {
     try {
-      return this.cardRepository.getByUserId(userId);
+      return this.cardRepository.getByUserId(userId, { relations: ['user'] });
     } catch (error) {
+      /* handle the error
+         handle the logging
+       */
       throw error;
     }
   }
@@ -27,6 +50,9 @@ export class CardsService {
       if (!card) throw new NotFoundException('Card not found');
       return card;
     } catch (error) {
+      /* handle the error
+         handle the logging
+       */
       throw error;
     }
   }
@@ -56,6 +82,9 @@ export class CardsService {
       };
     } catch (error) {
       if (transactionRunner) await transactionRunner.rollbackTransaction();
+      /* handle the error
+         handle the logging
+       */
       throw error;
     } finally { 
       if (transactionRunner) await transactionRunner.releaseTransaction();

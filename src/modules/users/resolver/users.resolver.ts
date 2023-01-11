@@ -1,12 +1,12 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { UsersService } from '../service/users.service';
+import { IUsersService } from '../service/users.service';
 import { MUTATIONS, QUERIES } from '../../../common/constants';
 import { CreateUserSchema, UserSchema } from '../dto/users-output.dto';
 import { CreateUserInput } from '../dto/users-input.dto';
 
 @Resolver(() => UserSchema)
 export class UsersResolver {
-  constructor(private readonly userService: UsersService) {}
+  constructor(private readonly userService: IUsersService) {}
 
   @Mutation(() => CreateUserSchema, {
     name: MUTATIONS.USER.CREATE_USER,

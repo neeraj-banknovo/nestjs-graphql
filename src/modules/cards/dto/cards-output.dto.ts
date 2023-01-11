@@ -11,7 +11,6 @@ export class CardSchema extends PickType(Card, [
   'expiry',
   'category',
   'status',
-  'userId',
   'createdAt',
 ] as const) {
   @Field(() => User, { description: 'User details' })

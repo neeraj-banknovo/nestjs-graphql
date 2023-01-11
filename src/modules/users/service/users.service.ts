@@ -4,8 +4,14 @@ import { IUser } from '../../../common/interfaces';
 import { UsersRepository } from '../../../database/repositories/users.repository';
 import { CreateUserInput } from '../dto/users-input.dto';
 
+export abstract class IUsersService {
+  abstract getAllUsers(): Promise<IUser[]>;
+  abstract getUserById(id: string): Promise<IUser>;
+  abstract createUser(data: CreateUserInput): Promise<Record<string, any>>;
+}
+
 @Injectable()
-export class UsersService {
+export class UsersService implements IUsersService {
   constructor(private readonly userRepository: UsersRepository) {}
 
   public async getAllUsers(): Promise<IUser[]> {

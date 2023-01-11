@@ -22,7 +22,7 @@ type UserSchema {
   id: ID!
 
   """Created at timestamp"""
-  createdAt: String!
+  createdAt: DateTime!
 
   """User first name"""
   firstName: String!
@@ -39,6 +39,11 @@ type UserSchema {
   """User status"""
   status: UserStatus!
 }
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
 
 """User status enum"""
 enum UserStatus {
@@ -61,13 +66,10 @@ type CardSchema {
   id: ID!
 
   """Created at timestamp"""
-  createdAt: String!
+  createdAt: DateTime!
 
   """Category of the card"""
   category: CardCategory!
-
-  """UserId of the card"""
-  userId: String!
 
   """Nick name on the card"""
   nickName: String!
@@ -108,7 +110,7 @@ type User {
   id: ID!
 
   """Created at timestamp"""
-  createdAt: String!
+  createdAt: DateTime!
 
   """Updated at timestamp"""
   updatedAt: String!

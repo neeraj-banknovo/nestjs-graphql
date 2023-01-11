@@ -1,19 +1,26 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { CardSchema, CreateCardSchema } from '../dto/cards-output.dto';
-import { CardsService } from '../service/cards.service';
+import { ICardsService } from '../service/cards.service';
 import { MUTATIONS, QUERIES } from '../../../common/constants';
 import { CreateCardInput } from '../dto/cards-input.dto';
 
 @Resolver(() => CardSchema)
 export class CardsResolver {
-  constructor(private readonly cardService: CardsService) {}
+  constructor(private readonly cardService: ICardsService) {}
 
   @Mutation(() => CreateCardSchema, {
     name: MUTATIONS.CARD.CREATE_CARD,
     description: 'Create card for user',
   })
   createCard(@Args('data') createCardInput: CreateCardInput) {
-    return this.cardService.createCard(createCardInput);
+    try {
+      return this.cardService.createCard(createCardInput);
+    } catch (error) {
+      /* handle the error
+         handle the logging
+       */
+      throw error;
+    }
   }
 
   @Query(() => CardSchema, {
@@ -21,7 +28,14 @@ export class CardsResolver {
     description: 'Get card by id',
   })
   getCardById(@Args('id') id: string) {
-    return this.cardService.getCardById(id);
+    try {
+      return this.cardService.getCardById(id);
+    } catch (error) {
+      /* handle the error
+         handle the logging
+       */
+      throw error;
+    }
   }
 
   @Query(() => [CardSchema], {
@@ -29,6 +43,13 @@ export class CardsResolver {
     description: 'Get cards user id',
   })
   getCardsByUserId(@Args('userId') userId: string) {
-    return this.cardService.getCardsByUserId(userId);
+    try {
+      return this.cardService.getCardsByUserId(userId);
+    } catch (error) {
+      /* handle the error
+         handle the logging
+       */
+      throw error;
+    }
   }
 }

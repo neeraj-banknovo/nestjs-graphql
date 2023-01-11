@@ -1,17 +1,18 @@
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
-import { ApolloDriver } from '@nestjs/apollo';
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
 import { modules } from '../modules';
 import { CardStatus, CardCategory, UserStatus } from '../common/enums';
 
 @Module({
   imports: [
-    GraphQLModule.forRoot({
+    GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
-      path: 'api/graphql',
+      path: '/graphql',
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
       include: [...modules],
+      useGlobalPrefix: true,
       resolvers: {
         CardStatus,
         CardCategory,

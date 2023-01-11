@@ -1,4 +1,4 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, GraphQLISODateTime, ID, ObjectType } from '@nestjs/graphql';
 import {
   CreateDateColumn,
   DeleteDateColumn,
@@ -13,7 +13,7 @@ export class BaseEntity implements IBaseEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Field(() => String, { description: 'Created at timestamp' })
+  @Field(() => GraphQLISODateTime, { description: 'Created at timestamp' })
   @CreateDateColumn({
     name: 'created_at',
     type: 'timestamptz',

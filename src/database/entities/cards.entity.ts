@@ -1,7 +1,7 @@
 import { ObjectType, Field } from '@nestjs/graphql';
 import { Entity, Column, JoinColumn, ManyToOne } from 'typeorm';
 import { CardCategory, CardStatus } from '../../common/enums';
-import { ICard } from '../../common/interfaces';
+import { ICard, IUser } from '../../common/interfaces';
 import { BaseEntity } from './base.entity';
 import { User } from './users.entity';
 
@@ -43,5 +43,5 @@ export class Card extends BaseEntity implements ICard {
   /* Associations */
   @ManyToOne(() => User)
   @JoinColumn({ name: 'user_id', referencedColumnName: 'id' })
-  user: User;
+  user: IUser;
 }

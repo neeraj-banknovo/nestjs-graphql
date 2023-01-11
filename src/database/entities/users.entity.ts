@@ -1,7 +1,7 @@
 import { ObjectType, Field } from '@nestjs/graphql';
 import { Column, Entity, OneToMany } from 'typeorm';
 import { UserStatus } from '../../common/enums';
-import { IUser } from '../../common/interfaces';
+import { ICard, IUser } from '../../common/interfaces';
 import { BaseEntity } from './base.entity';
 import { Card } from './cards.entity';
 
@@ -34,5 +34,5 @@ export class User extends BaseEntity implements IUser {
 
   /* Associations */
   @OneToMany(() => Card, (card) => card.userId)
-  cards: Card[];
+  cards: ICard[];
 }
