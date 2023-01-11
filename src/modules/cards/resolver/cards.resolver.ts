@@ -12,7 +12,7 @@ export class CardsResolver {
     name: MUTATIONS.CARD.CREATE_CARD,
     description: 'Create card for user',
   })
-  createCard(@Args('data') createCardInput: CreateCardInput) {
+  createCard(@Args() createCardInput: CreateCardInput) {
     try {
       return this.cardService.createCard(createCardInput);
     } catch (error) {
