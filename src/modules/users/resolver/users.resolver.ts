@@ -13,7 +13,14 @@ export class UsersResolver {
     description: 'Create user',
   })
   createCard(@Args('data') createUserInput: CreateUserInput) {
-    return this.userService.createUser(createUserInput);
+    try {
+      return this.userService.createUser(createUserInput);
+    } catch (error) {
+      /* handle the error
+         handle the logging
+       */
+      throw error;
+    }
   }
 
   @Query(() => UserSchema, {
@@ -21,7 +28,14 @@ export class UsersResolver {
     description: 'Get user by id',
   })
   getUserById(@Args('id') id: string) {
-    return this.userService.getUserById(id);
+    try {
+      return this.userService.getUserById(id);
+    } catch (error) {
+      /* handle the error
+         handle the logging
+       */
+      throw error;
+    }
   }
 
   @Query(() => [UserSchema], {
@@ -29,6 +43,13 @@ export class UsersResolver {
     description: 'Get all users',
   })
   getUsers() {
-    return this.userService.getAllUsers();
+    try {
+      return this.userService.getAllUsers();
+    } catch (error) {
+      /* handle the error
+         handle the logging
+       */
+      throw error;
+    }
   }
 }

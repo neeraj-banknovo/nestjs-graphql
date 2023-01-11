@@ -37,9 +37,6 @@ export class CardsService implements ICardsService {
     try {
       return this.cardRepository.getByUserId(userId, { relations: ['user'] });
     } catch (error) {
-      /* handle the error
-         handle the logging
-       */
       throw error;
     }
   }
@@ -50,9 +47,6 @@ export class CardsService implements ICardsService {
       if (!card) throw new NotFoundException('Card not found');
       return card;
     } catch (error) {
-      /* handle the error
-         handle the logging
-       */
       throw error;
     }
   }
@@ -82,11 +76,8 @@ export class CardsService implements ICardsService {
       };
     } catch (error) {
       if (transactionRunner) await transactionRunner.rollbackTransaction();
-      /* handle the error
-         handle the logging
-       */
       throw error;
-    } finally { 
+    } finally {
       if (transactionRunner) await transactionRunner.releaseTransaction();
     }
   }
