@@ -4,4 +4,4 @@ import { modules } from '.';
 @Module({
   imports: [...modules],
 })
-export class ModulesModule {}
+export class FeaturesModule {}

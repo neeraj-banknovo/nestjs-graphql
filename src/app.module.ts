@@ -7,7 +7,7 @@ import { CronModule } from './crons/cron.module';
 import { DatabaseModule } from './database/database.module';
 import { GraphQlModule } from './graphql/graphql.module';
 import { HealthCheckModule } from './health-check/health.check.module';
-import { ModulesModule } from './modules/modules.module';
+import { FeaturesModule } from './modules/features.module';
 import { SharedModule } from './shared/shared.module';
 
 @Module({
@@ -19,7 +19,7 @@ import { SharedModule } from './shared/shared.module';
     // CronModule,
 
     /* Application modules */
-    ModulesModule,
+    FeaturesModule,
 
     /* This modules registers the graphql and the endpoints */
     GraphQlModule,
