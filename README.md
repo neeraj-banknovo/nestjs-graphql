@@ -1,31 +1,35 @@
 
 # Description
 
-NestJs boilerplate using GraphQl code-first approach
+NestJs boilerplate using GraphQl code-first approach to get started with NestJs.
 
-#### Setting config
+## Setting config
 
 ```bash
 # Run the below command to set the config and replace the template values with your config values
 $ cp .env.sample .env
 ```
 
-#### Setting Husky
+## Setting Husky
 
 ```bash
 # Run this command to setup & prepare husky
 $ npm run prepare
 ```
 
-#### Installation
+## Installation
 
 ```bash
 $ npm install
 ```
 
-#### Running the app
+## Running the app
+Before running the app switch to the required node version `v18.12.0`
 
 ```bash
+# switch node version
+$ nvm use
+
 # development
 $ npm run start
 
@@ -36,14 +40,17 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-#### See your app in action
+## See your app in action
 
  - [Api](http://localhost:3005/api)
- - [Graphql](http://localhost:3005/api/graphql)
  - [Health](http://localhost:3005/api/health)
 
+### Multiple graphql endpoint supported 
+ - [endpoint1](http://localhost:3005/api/graphql/endpoint1)
+ - [endpoint2](http://localhost:3005/api/graphql/endpoint2)
 
-#### Generate Migration based on entities
+
+## Generate Migration based on entities
 
 ```bash
 # Generate Migration based on Migration Scripts, give your migrations a name using --name flag (optional)
@@ -56,22 +63,22 @@ $ npm run migration:create --name=<migration-name>
 $ npm run migration:run
 ```
 
-#### Linting
+## Linting
 
 ```bash
 # Linting with Eslint
 $ npm run lint
 ```
 
-#### Application [compodoc](https://compodoc.app/)
+## Application [compodoc](https://compodoc.app/)
 Run the below command and visit [here](http://127.0.0.1:8001/)
 ```bash
 # This command will generate the application documentation.
 npx @compodoc/compodoc -p tsconfig.json -s -r 8001
 ```
 
-#### Stay in touch
+## Stay in touch
 
-- Author - [Neeraj Soni](neeraj@novo.co)
+- [Neeraj Soni](neeraj@novo.co)
 
 

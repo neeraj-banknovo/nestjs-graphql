@@ -2,17 +2,18 @@ import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
-import { modules } from '../modules';
 import { CardStatus, CardCategory, UserStatus } from '../common/enums';
+import { modules } from '../modules';
+import { AdminModule } from '../modules/admin/admin.module';
 
 @Module({
   imports: [
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       path: '/graphql/endpoint1',
-      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+      autoSchemaFile: join(process.cwd(), 'src/schema/schema1.gql'),
       include: [...modules],
-      useGlobalPrefix: true,
+      useGlobalPrefix: true, // its will use /api prefix defined in main.ts
       resolvers: {
         /* 
         List all your Graphql enums and scalars here.
@@ -35,8 +36,8 @@ import { CardStatus, CardCategory, UserStatus } from '../common/enums';
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       path: '/graphql/endpoint2',
-      autoSchemaFile: join(process.cwd(), 'src/schema2.gql'),
-      include: [],
+      autoSchemaFile: join(process.cwd(), 'src/schema/schema2.gql'),
+      include: [AdminModule],
       useGlobalPrefix: true,
       resolvers: {
         /* 

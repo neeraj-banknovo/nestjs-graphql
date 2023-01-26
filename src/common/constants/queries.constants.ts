@@ -7,4 +7,7 @@ export const QUERIES = {
     GET_CARD_BY_ID: 'getCardById',
     GET_CARDS_BY_USER_ID: 'getCardsByUserId',
   },
+  ADMIN: {
+    POKE: 'pokeAdmin',
+  },
 };

@@ -7,6 +7,7 @@ import { CronModule } from './crons/cron.module';
 import { DatabaseModule } from './database/database.module';
 import { GraphQlModule } from './graphql/graphql.module';
 import { HealthCheckModule } from './health-check/health.check.module';
+import { AdminModule } from './modules/admin/admin.module';
 import { FeaturesModule } from './modules/features.module';
 import { SharedModule } from './shared/shared.module';
 
@@ -16,10 +17,13 @@ import { SharedModule } from './shared/shared.module';
     ConfigsModule,
 
     /* This module registers the crons in the app */
-    // CronModule,
+    CronModule,
 
-    /* Application modules */
+    /* Application feature modules */
     FeaturesModule,
+
+    /* Admin module to be used in multiple endpoints */
+    AdminModule,
 
     /* This modules registers the graphql and the endpoints */
     GraphQlModule,

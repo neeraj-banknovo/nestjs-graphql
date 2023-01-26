@@ -3,7 +3,7 @@ import { IBaseEntity } from './base.interface';
 import { ICard } from './cards.interface';
 
 export interface IUser extends IBaseEntity {
-  id: string;
+  id?: string;
   firstName: string;
   lastName: string;
   email: string;

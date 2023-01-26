@@ -1,7 +1,7 @@
 {
-  "name": "nestjs-graphql-codefirst",
+  "name": "nestjs-graphql",
   "version": "0.0.1",
-  "description": "",
+  "description": "NestJs Boilerplate for getting started with GraphQl (Code-first approach)",
   "author": "",
   "private": true,
   "license": "UNLICENSED",
@@ -54,6 +54,7 @@
     "webpack": "^5.75.0"
   },
   "devDependencies": {
+    "@faker-js/faker": "^7.6.0",
     "@nestjs/cli": "^8.0.0",
     "@nestjs/schematics": "^8.0.0",
     "@nestjs/testing": "^8.0.0",

@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  nest-graphql:
+    build : 
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    env_file:
+      - docker.env
+    container_name: nest-graphql
+    ports:
+      - 3005:3005
+    networks: 
+      - my-network
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:14-alpine
+    restart: always
+    env_file:
+      - docker.env
+    ports:
+      - '5432:5432'
+    volumes: 
+      - my-volume:/var/lib/postgresql/data
+    networks: 
+      - my-network
+
+networks:
+  my-network:
+    external: true
+
+volumes:
+  my-volume:
+    driver: local
