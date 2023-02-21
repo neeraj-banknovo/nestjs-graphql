@@ -4,9 +4,6 @@ WORKDIR /usr/src/app
 
 COPY package.json yarn.lock ./
 
-# Copying migration executable
-COPY migrate.sh ./
-
 # install dependencies
 RUN yarn --frozen-lockfile
 
@@ -34,4 +31,5 @@ COPY --from=BUILD_STAGE /usr/src/app/node_modules ./node_modules
 
 EXPOSE 3005
 
-CMD [ "node", "dist/src/main" ]
+CMD [ "npm", "run" "start:dev" ]
+# CMD [ "node", "dist/src/main" ]

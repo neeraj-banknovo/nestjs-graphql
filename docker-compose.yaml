@@ -11,6 +11,9 @@ services:
     container_name: nest-graphql
     ports:
       - 3005:3005
+    volumes: 
+      # hot reload on code changes
+      - ./src:/usr/src/app/src
     networks: 
       - my-network
     depends_on:
