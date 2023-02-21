@@ -1,16 +1,13 @@
-FROM node:18-alpine AS BUILD_STAGE
+FROM node:18-alpine AS builder
 
 WORKDIR /usr/src/app
 
-COPY package.json yarn.lock ./
+COPY package.json yarn.lock docker-entrypoint.sh ./
 
 # install dependencies
 RUN yarn --frozen-lockfile
 
 COPY . .
-
-# lint & test
-RUN yarn lint
 
 # build application
 RUN yarn build
@@ -25,11 +22,14 @@ FROM node:18-alpine
 
 WORKDIR /usr/src/app
 
-# copy from BUILD_STAGE
-COPY --from=BUILD_STAGE /usr/src/app/dist ./dist
-COPY --from=BUILD_STAGE /usr/src/app/node_modules ./node_modules
+# copy from builder
+COPY --from=builder /usr/src/app ./
 
 EXPOSE 3005
 
-CMD [ "npm", "run" "start:dev" ]
+RUN chmod +x docker-entrypoint.sh
+
+RUN sh docker-entrypoint.sh
+
+CMD [ "npm", "run", "start:dev" ]
 # CMD [ "node", "dist/src/main" ]

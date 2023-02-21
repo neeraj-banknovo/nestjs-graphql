@@ -1,8 +1,4 @@
-import { config } from 'dotenv';
-config();
-
 import { DataSource, DataSourceOptions } from 'typeorm';
-import { configMethods } from '../config';
 
 export const dataSourceOptions: DataSourceOptions = {
   type: 'postgres',
@@ -14,7 +10,7 @@ export const dataSourceOptions: DataSourceOptions = {
   database: process.env.DATABASE,
   entities: [__dirname + '/entities/*{.ts,.js}'],
   migrations: ['dist/data-source/migrations/*{.ts,.js}'],
-  logging: configMethods.isLocalEnv(),
+  logging: process.env.NODE_ENV === 'local',
 };
 
 export const ConnectionSource = new DataSource(dataSourceOptions);
